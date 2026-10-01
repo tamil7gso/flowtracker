@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Habit Tracker — Personal Productivity & Weekly Timetable</title>
+    <!-- Google Fonts: Roboto Slab -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <!-- Chart.js for statistics -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       DARK FLOATING CARD LOGIN OVERLAY (Anywhere App Style)
+  ═══════════════════════════════════════ -->
+  <div class="login-overlay anywhere-login-overlay" id="loginOverlay">
+    <div class="anywhere-card" id="loginCard">
+      <!-- Top App Bar -->
+      <header class="anywhere-card-header">
+        <div class="anywhere-brand">
+          <span class="anywhere-dot"></span>
+          <span class="anywhere-brand-name">Habit Tracker<span class="brand-dot">.</span></span>
+        </div>
+        <div class="anywhere-nav-links">
+          <a href="#" class="anywhere-nav-link" onclick="event.preventDefault(); showToast('Habit Tracker — Student Productivity & Weekly Timetable');">Home</a>
+          <a href="#" class="anywhere-nav-link" onclick="event.preventDefault(); toggleAuthMode();" id="anywhereJoinLink">Join</a>
+        </div>
+      </header>
+
+      <!-- Main Split Content Area -->
+      <div class="anywhere-card-body">
+        <!-- Left Column: Form -->
+        <div class="anywhere-form-side">
+          <div class="anywhere-badge" id="anywhereBadge">START FOR FREE</div>
+          <h1 class="anywhere-title" id="anywhereTitle">Habit Tracker<span class="title-dot">.</span></h1>
+          <p class="anywhere-sub">
+            <span id="anywherePromptText">Already A Member?</span> 
+            <a href="#" id="anywhereToggleLink" onclick="event.preventDefault(); toggleAuthMode();">Log In</a>
+          </p>
+
+          <form id="loginForm" onsubmit="return handleLogin(event)">
+            <!-- First Name & Last Name (Side by Side) -->
+            <div class="anywhere-name-row" id="anywhereNameRow">
+              <div class="anywhere-field">
+                <label class="anywhere-label">First name</label>
+                <div class="anywhere-input-wrap">
+                  <input type="text" id="loginFirstName" class="anywhere-input" value="Michał" placeholder="First name" autocomplete="given-name" />
+                  <span class="anywhere-field-icon">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="M15 8h2M15 12h2M7 16h10"/></svg>
+                  </span>
+                </div>
+              </div>
+              <div class="anywhere-field">
+                <label class="anywhere-label">Last name</label>
+                <div class="anywhere-input-wrap">
+                  <input type="text" id="loginLastName" class="anywhere-input" value="Masiak" placeholder="Last name" autocomplete="family-name" />
+                  <span class="anywhere-field-icon">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="M15 8h2M15 12h2M7 16h10"/></svg>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Email field -->
+            <div class="anywhere-field">
+              <label class="anywhere-label">Email</label>
+              <div class="anywhere-input-wrap">
+                <input type="text" id="loginUsername" class="anywhere-input" value="michal.masiak@anywhere.co" placeholder="Email or Username" autocomplete="username" required />
+                <span class="anywhere-field-icon">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- Password field -->
+            <div class="anywhere-field">
+              <label class="anywhere-label">Password</label>
+              <div class="anywhere-input-wrap anywhere-input-focus">
+                <input type="password" id="loginPassword" class="anywhere-input" value="13579" placeholder="•••••••• (default: 13579)" autocomplete="current-password" required />
+                <button type="button" class="anywhere-eye-btn" onclick="toggleLoginPassword()" id="loginEyeBtn" title="Toggle password">
+                  <svg id="loginEyeIcon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="anywhere-error" id="loginError">
+              <span>✕</span> Incorrect PIN or Password. Use default PIN: <strong>13579</strong>
+            </div>
+
+            <!-- Actions Row -->
+            <div class="anywhere-actions-row">
+              <button type="button" class="anywhere-btn-secondary" onclick="openMethodDialog()">
+                <span>Change method</span>
+              </button>
+              <button type="submit" class="anywhere-btn-primary" id="loginSubmitBtn">
+                <span id="loginSubmitText">Create account</span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Right decorative overlay over the card background -->
+        <div class="anywhere-scenic-overlay">
+          <svg class="scenic-wave-divider" viewBox="0 0 100 400" preserveAspectRatio="none">
+            <path d="M10,0 C70,120 20,260 80,400" fill="none" stroke="rgba(255,255,255,0.14)" stroke-dasharray="4,5" stroke-width="1.5"/>
+          </svg>
+          <div class="anywhere-monogram">.AW</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       SIDEBAR NAVIGATION
+  ═══════════════════════════════════════ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-icon">◈</span>
+      <span class="brand-name">Habit Tracker</span>
+    </div>
+
+    <!-- Active User Profile Card -->
+    <div class="sidebar-user" id="sidebarUserCard">
+      <div class="user-avatar" id="sidebarAvatar">⚡</div>
+      <div class="user-details">
+        <div class="user-name" id="sidebarUserName">Alex</div>
+        <div class="user-status"><span class="status-pulse"></span> Focus Champion</div>
+      </div>
+      <div class="user-actions">
+        <button class="user-icon-btn" id="sidebarSettingsBtn" title="Account & PIN Settings">⚙</button>
+        <button class="user-icon-btn" id="sidebarLockBtn" title="Lock App / Sign Out">🔒</button>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-item active" data-section="dashboard">
+        <span class="nav-icon">⊞</span>
+        <span class="nav-label">Dashboard</span>
+      </a>
+      <a href="#" class="nav-item" data-section="goals">
+        <span class="nav-icon">◎</span>
+        <span class="nav-label">Daily Goals</span>
+      </a>
+      <a href="#" class="nav-item" data-section="habits">
+        <span class="nav-icon">◉</span>
+        <span class="nav-label">Habit Tracker</span>
+      </a>
+      <a href="#" class="nav-item" data-section="timetable">
+        <span class="nav-icon">◷</span>
+        <span class="nav-label">Timetable</span>
+      </a>
+      <a href="#" class="nav-item" data-section="stats">
+        <span class="nav-icon">◈</span>
+        <span class="nav-label">Statistics</span>
+      </a>
+      <a href="#" class="nav-item" data-section="rewards">
+        <span class="nav-icon">✦</span>
+        <span class="nav-label">Rewards</span>
+      </a>
+      <a href="#" class="nav-item" data-section="calendar">
+        <span class="nav-icon">▦</span>
+        <span class="nav-label">Calendar</span>
+      </a>
+      <a href="#" class="nav-item" data-section="profile">
+        <span class="nav-icon">⚙</span>
+        <span class="nav-label">Profile & Settings</span>
+      </a>
+    </nav>
+
+    <!-- Clean, Spacious Sidebar Timetable Widget -->
+    <div class="sidebar-timetable">
+      <div class="tt-head">
+        <div class="tt-title-wrap">
+          <span class="tt-title">Today's Routine</span>
+          <span class="tt-today-badge" id="ttTodayDayBadge">Mon</span>
+        </div>
+        <button class="tt-add" id="ttAddBtn" title="Add time slot">+</button>
+      </div>
+      
+      <!-- Day selector tabs with ample space -->
+      <div class="tt-days" id="ttDays"></div>
+
+      <!-- Schedule Cards List (Clear, spacious, zero squishing) -->
+      <div class="tt-list" id="ttList"></div>
+
+      <!-- Prominent link to open full timetable -->
+      <button class="tt-full-link-btn" id="ttGoToSection">
+        <span>Open Full Timetable</span>
+        <span>↗</span>
+      </button>
+    </div>
+
+    <div class="sidebar-footer">
+      <button class="restart-btn" id="restartBtn" title="Erase all data and start fresh">↺ Reset Data</button>
+      <div class="sidebar-quote" id="sidebarQuote">Loading inspiration…</div>
+    </div>
+  </aside>
+
+  <!-- Mobile hamburger -->
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ═══════════════════════════════════════
+       MAIN CONTENT WRAPPER
+  ═══════════════════════════════════════ -->
+  <main class="main-content">
+
+    <!-- ── NOTIFICATION BANNER ─────────────── -->
+    <div class="notification-banner" id="notifBanner" style="display:none">
+      <span id="notifText"></span>
+      <button class="notif-close" id="notifClose">✕</button>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         SECTION: DASHBOARD
+    ══════════════════════════════════════ -->
+    <section class="section active" id="section-dashboard">
+      <header class="section-header">
+        <div>
+          <div class="greeting-badge" id="dashGreetingBadge">Ready to conquer the day?</div>
+          <h1 class="section-title">Dashboard</h1>
+          <p class="section-sub" id="dateDisplay">—</p>
+        </div>
+        <div class="live-time-card">
+          <span class="live-time-label">LOCAL TIME</span>
+          <div class="live-time" id="liveTime">—</div>
+        </div>
+      </header>
+
+      <!-- Stat cards row -->
+      <div class="stat-grid">
+        <div class="stat-card accent-blue">
+          <div class="stat-icon-bg">🎯</div>
+          <div class="stat-label">Today's Progress</div>
+          <div class="stat-value" id="dashTodayPct">0%</div>
+          <div class="stat-bar-wrap">
+            <div class="stat-bar" id="dashProgressBar" style="width:0%"></div>
+          </div>
+        </div>
+        <div class="stat-card accent-purple">
+          <div class="stat-icon-bg">🔥</div>
+          <div class="stat-label">Current Streak</div>
+          <div class="stat-value" id="dashStreak">0 🔥</div>
+          <div class="stat-sub">consecutive 100% days</div>
+        </div>
+        <div class="stat-card accent-cyan">
+          <div class="stat-icon-bg">📈</div>
+          <div class="stat-label">Weekly Score</div>
+          <div class="stat-value" id="dashWeekly">0%</div>
+          <div class="stat-sub">last 7 days average</div>
+        </div>
+        <div class="stat-card accent-indigo">
+          <div class="stat-icon-bg">🗓️</div>
+          <div class="stat-label">Monthly Score</div>
+          <div class="stat-value" id="dashMonthly">0%</div>
+          <div class="stat-sub">this calendar month</div>
+        </div>
+      </div>
+
+      <div class="dash-two-col">
+        <!-- Today's goals quick view -->
+        <div class="card dash-col-card">
+          <div class="card-head">
+            <div>
+              <h2 class="card-title">Today's Goals</h2>
+              <p class="card-subtitle">Keep momentum on your top priorities</p>
+            </div>
+            <button class="btn-primary" id="dashAddGoal">+ Add Goal</button>
+          </div>
+          <div id="dashGoalList" class="goal-list-mini">
+            <p class="empty-state">No goals yet — add your first one!</p>
+          </div>
+        </div>
+
+        <!-- Weekly mini bar chart -->
+        <div class="card dash-col-card">
+          <div class="card-head">
+            <div>
+              <h2 class="card-title">Weekly Overview</h2>
+              <p class="card-subtitle">Completion breakdown over 7 days</p>
+            </div>
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="dashWeekChart" height="160"></canvas>
+          </div>
+        </div>
+        
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION: DAILY GOALS
+    ══════════════════════════════════════ -->
+    <section class="section" id="section-goals">
+      <header class="section-header">
+        <div>
+          <h1 class="section-title">Daily Goals</h1>
+          <p class="section-sub" id="goalsDateDisplay">—</p>
+        </div>
+        <button class="btn-primary" id="openAddGoalModal">+ New Goal</button>
+      </header>
+
+      <!-- Filter chips -->
+      <div class="filter-chips" id="goalFilters">
+        <button class="chip active" data-cat="All">All</button>
+        <button class="chip" data-cat="Study">📚 Study</button>
+        <button class="chip" data-cat="Coding">💻 Coding</button>
+        <button class="chip" data-cat="Exercise">🏋️ Exercise</button>
+        <button class="chip" data-cat="Personal">🌱 Personal</button>
+        <button class="chip" data-cat="Other">✦ Other</button>
+      </div>
+
+      <!-- Progress summary -->
+      <div class="progress-summary">
+        <span id="goalsSummaryText">0 of 0 completed</span>
+        <div class="progress-track">
+          <div class="progress-fill" id="goalsFillBar" style="width:0%"></div>
+        </div>
+        <span id="goalsPct">0%</span>
+      </div>
+
+      <!-- Goal list -->
+      <div id="goalsList" class="goals-container">
+        <p class="empty-state">No goals for today. Hit <strong>+ New Goal</strong> to get started.</p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION: HABIT TRACKER
+    ══════════════════════════════════════ -->
+    <section class="section" id="section-habits">
+      <header class="section-header">
+        <div>
+          <h1 class="section-title">Habit Tracker</h1>
+          <p class="section-sub">Build lasting consistency with GitHub-style visual heatmaps</p>
+        </div>
+        <button class="btn-primary" id="openAddHabitModal">+ New Habit</button>
+      </header>
+
+      <!-- Habit stats row -->
+      <div class="stat-grid" style="grid-template-columns:repeat(3,1fr)">
+        <div class="stat-card accent-blue">
+          <div class="stat-label">Total Completed</div>
+          <div class="stat-value" id="habitTotalCompleted">0</div>
+        </div>
+        <div class="stat-card accent-purple">
+          <div class="stat-label">Best Streak</div>
+          <div class="stat-value" id="habitBestStreak">0 🔥</div>
+        </div>
+        <div class="stat-card accent-cyan">
+          <div class="stat-label">Success Rate</div>
+          <div class="stat-value" id="habitSuccessRate">0%</div>
+        </div>
+      </div>
+
+      <!-- Habit list with streaks -->
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <h2 class="card-title">Active Habits</h2>
+            <p class="card-subtitle">Check in every day to protect your streak</p>
+          </div>
+        </div>
+        <div id="habitsList"></div>
+      </div>
+
+      <!-- Heatmap -->
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <h2 class="card-title">Completion Heatmap — Last 12 Weeks</h2>
+            <p class="card-subtitle">Combined view of goals & habit completions</p>
+          </div>
+        </div>
+        <div id="heatmapContainer" class="heatmap-wrapper"></div>
+        <div class="heatmap-legend">
+          <span>Less</span>
+          <div class="legend-cell" style="--lvl:0"></div>
+          <div class="legend-cell" style="--lvl:1"></div>
+          <div class="legend-cell" style="--lvl:2"></div>
+          <div class="legend-cell" style="--lvl:3"></div>
+          <div class="legend-cell" style="--lvl:4"></div>
+          <span>More</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION: TIMETABLE (DEDICATED VIEW)
+    ══════════════════════════════════════ -->
+    <section class="section" id="section-timetable">
+      <header class="section-header">
+        <div>
+          <div class="greeting-badge">My Complete Weekly Student Plan</div>
+          <h1 class="section-title">Weekly Routine & Timetable</h1>
+          <p class="section-sub">Synced with your student plan — manage weekly classes, workouts, coding, and recovery</p>
+        </div>
+        <div class="tt-header-actions">
+          <button class="btn-primary" id="openAddTtModalBtn">+ Add Time Slot</button>
+        </div>
+      </header>
+
+      <!-- View Switcher Tabs -->
+      <div class="tt-view-switch-tabs">
+        <button class="tt-view-tab-btn active" data-subview="grid" id="tabBtnGrid">
+          <span>⊞</span> Weekly time table
+        </button>
+        <button class="tt-view-tab-btn" data-subview="timeline" id="tabBtnTimeline">
+          <span>◷</span> Daily Timeline
+        </button>
+        <button class="tt-view-tab-btn" data-subview="workout" id="tabBtnWorkout">
+          <span>🏋️</span> Home Workout Regimen
+        </button>
+        <button class="tt-view-tab-btn" data-subview="wellness" id="tabBtnWellness">
+          <span>📋</span> Wellness & Grooming
+        </button>
+      </div>
+
+      <!-- SUBVIEW 1: WEEKLY GRID TABLE (Full 7-Day Matrix) -->
+      <div class="tt-subview-panel active" id="ttSubviewGrid">
+        <!-- Today's Live Workout & Grooming Companion Widget (Blue Circled Area) -->
+        <div class="today-workout-widget" id="todayWorkoutWidget">
+          <!-- Dynamically populated by renderTodayWorkoutWidget() -->
+        </div>
+
+        <div class="card tt-grid-card">
+          <div class="tt-grid-card-head">
+            <div>
+              <h2 class="card-title">Weekly time table</h2>
+              <p class="card-subtitle">Complete 7-day student timetable from Excel — classes, workouts, coding, and recovery</p>
+            </div>
+            <div class="tt-grid-filters" id="ttGridFilters">
+              <button type="button" class="btn-ghost btn-sm" onclick="reloadExcelTimetable()" style="margin-right:8px;font-size:11.5px;" title="Reload timetable from Excel sheet">↺ Reload Excel Schedule</button>
+              <span class="filter-label">Filter:</span>
+              <button class="filter-pill active" data-cat="all">All</button>
+              <button class="filter-pill" data-cat="Study">Study & College</button>
+              <button class="filter-pill" data-cat="Coding">Coding</button>
+              <button class="filter-pill" data-cat="Fitness">Fitness</button>
+              <button class="filter-pill" data-cat="Food">Food</button>
+              <button class="filter-pill" data-cat="Recovery">Recovery & Play</button>
+              <button class="filter-pill" data-cat="Sleep">Sleep</button>
+            </div>
+          </div>
+          
+          <div class="tt-grid-scroll-wrap">
+            <div class="tt-grid-wrapper" id="ttGridWrapper">
+              <!-- Full 7-Day table generated by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUBVIEW 2: DAILY TIMELINE (Day-by-Day View with Slot Edit) -->
+      <div class="tt-subview-panel" id="ttSubviewTimeline">
+        <div class="tt-view-day-selector" id="ttViewDayTabs"></div>
+
+        <div class="card tt-main-card">
+          <div class="tt-main-card-header">
+            <div>
+              <h2 class="card-title" id="ttMainDayTitle">Monday Schedule</h2>
+              <p class="card-subtitle" id="ttMainSlotCount">0 time slots configured</p>
+            </div>
+            <div class="tt-main-actions">
+              <button class="btn-secondary btn-sm" id="ttAddSlotDirectBtn">+ Add Slot</button>
+            </div>
+          </div>
+
+          <div id="ttTimelineContainer" class="tt-timeline-list"></div>
+        </div>
+      </div>
+
+      <!-- SUBVIEW 3: HOME WORKOUT PLAN (From Excel Sheet: Home Workout Plan) -->
+      <div class="tt-subview-panel" id="ttSubviewWorkout">
+        <div class="card" style="margin-bottom: 20px;">
+          <div class="card-head">
+            <div>
+              <h2 class="card-title">Beginner-Friendly Home Workout Plan</h2>
+              <p class="card-subtitle">Bodyweight + Backpack training routine — click ✎ to customize sessions & exercises</p>
+            </div>
+            <button class="btn-secondary btn-sm" onclick="openAddWorkoutModal()">+ Add Custom Workout</button>
+          </div>
+          <div class="workout-days-grid" id="workoutDaysContainer">
+            <!-- 7 Day Workout cards generated by JS -->
+          </div>
+
+          <div class="workout-progression-box">
+            <div class="progression-head">
+              <span class="progression-icon">⚡</span>
+              <h3 class="progression-title">Progression Guidelines (From Student Plan)</h3>
+            </div>
+            <ul class="progression-list">
+              <li>Start with good technique and stay within the listed rep ranges.</li>
+              <li>When you can comfortably reach the top of the rep range with solid form, increase difficulty.</li>
+              <li>Use a harder variation, slow the movement, add a small amount of backpack weight, or add reps gradually.</li>
+              <li>Keep increases small and sustainable; recovery and consistency matter more than rushing.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUBVIEW 4: WELLNESS & GROOMING GUIDE (From Excel Sheet: Health, Food & Grooming) -->
+      <div class="tt-subview-panel" id="ttSubviewWellness">
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <h2 class="card-title">Student Health, Food, Grooming & Demeanor Guide</h2>
+              <p class="card-subtitle">Daily foundational habits and presence guidelines — click + Add to add custom habits</p>
+            </div>
+            <button class="btn-secondary btn-sm" onclick="openAddWellnessModal()">+ Add Wellness Item</button>
+          </div>
+          <div class="wellness-sections-grid" id="wellnessSectionsContainer">
+            <!-- 4 Sections: Health, Food, Grooming, Pleasant Presence generated by JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION: STATISTICS
+    ══════════════════════════════════════ -->
+    <section class="section" id="section-stats">
+      <header class="section-header">
+        <div>
+          <h1 class="section-title">Statistics & Insights</h1>
+          <p class="section-sub">Comprehensive analytics across all categories and timeframes</p>
+        </div>
+      </header>
+
+      <div class="charts-grid">
+        <!-- Pie chart -->
+        <div class="card chart-card">
+          <div class="card-head"><h2 class="card-title">Today's Completion</h2></div>
+          <div class="chart-wrap">
+            <canvas id="pieChart"></canvas>
+          </div>
+        </div>
+        <!-- Bar chart -->
+        <div class="card chart-card">
+          <div class="card-head"><h2 class="card-title">Weekly Performance</h2></div>
+          <div class="chart-wrap">
+            <canvas id="barChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Monthly overview -->
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <h2 class="card-title">Monthly Progress Curve</h2>
+            <p class="card-subtitle">Daily completion trend throughout this month</p>
+          </div>
+        </div>
+        <canvas id="monthChart" height="100"></canvas>
+      </div>
+
+      <!-- Category breakdown -->
+      <div class="card">
+        <div class="card-head"><h2 class="card-title">Goals by Category</h2></div>
+        <div id="catBreakdown" class="cat-breakdown"></div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION: REWARDS
+    ══════════════════════════════════════ -->
+    <section class="section" id="section-rewards">
+      <header class="section-header">
+        <div>
+          <h1 class="section-title">Rewards & Badges</h1>
+          <p class="section-sub">Gamify your daily discipline and level up</p>
+        </div>
+      </header>
+
+      <!-- Points display -->
+      <div class="points-banner">
+        <div class="points-orb">
+          <div class="points-value" id="rewardPoints">0</div>
+          <div class="points-label">Total Points</div>
+        </div>
+        <div class="points-breakdown">
+          <div class="pts-row"><span>Goals completed today</span><span id="ptsTodayGoals">+0 pts</span></div>
+          <div class="pts-row"><span>Current streak bonus</span><span id="ptsStreakBonus">+0 pts</span></div>
+          <div class="pts-row"><span>Perfect day bonuses</span><span id="ptsPerfect">+0 pts</span></div>
+        </div>
+      </div>
+
+      <!-- Badges grid -->
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <h2 class="card-title">Achievements & Badges</h2>
+            <p class="card-subtitle">Unlock badges as you hit major productivity milestones</p>
+          </div>
+        </div>
+        <div class="badges-grid" id="badgesGrid"></div>
+      </div>
+
+      <!-- Level progress -->
+      <div class="card">
+        <div class="card-head">
+          <h2 class="card-title">Productivity Level</h2>
+          <span class="level-tag" id="levelTag">Novice</span>
+        </div>
+        <div class="level-bar-wrap">
+          <div class="level-fill" id="levelFill" style="width:0%"></div>
+        </div>
+        <p class="level-note" id="levelNote">0 pts to next level</p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION: CALENDAR (OPTIMIZED 2-COL LAYOUT)
+    ══════════════════════════════════════ -->
+    <section class="section" id="section-calendar">
+      <header class="section-header">
+        <div>
+          <h1 class="section-title">Calendar & History</h1>
+          <p class="section-sub">Audit daily productivity, past completions, and scheduled routines</p>
+        </div>
+      </header>
+
+      <div class="cal-layout-wrap">
+        <!-- Left: Compact, perfectly proportioned calendar -->
+        <div class="cal-left-panel">
+          <div class="card cal-card">
+            <!-- Calendar controls -->
+            <div class="cal-controls">
+              <button class="cal-nav" id="calPrev" title="Previous Month">‹</button>
+              <span class="cal-month-label" id="calMonthLabel">—</span>
+              <button class="cal-nav" id="calNext" title="Next Month">›</button>
+            </div>
+
+            <!-- Calendar weekday header -->
+            <div class="cal-dow-row">
+              <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span>
+              <span>Thu</span><span>Fri</span><span>Sat</span>
+            </div>
+
+            <!-- Calendar cell grid -->
+            <div class="cal-grid" id="calGrid"></div>
+
+            <div class="cal-legend">
+              <span class="cal-legend-item"><span class="legend-dot today-dot"></span> Today</span>
+              <span class="cal-legend-item"><span class="legend-dot done-dot"></span> 100% Complete</span>
+              <span class="cal-legend-item"><span class="legend-dot partial-dot"></span> In Progress</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Selected Day Inspector -->
+        <div class="cal-right-panel">
+          <div class="card cal-inspector-card" id="calDayDetail">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title" id="calDayTitle">Day Overview</h2>
+                <p class="card-subtitle" id="calDaySubtitle">Click any calendar date to review its details</p>
+              </div>
+              <button class="btn-primary btn-sm" id="calAddGoalForDayBtn">+ Add Goal</button>
+            </div>
+
+            <div class="cal-inspector-body">
+              <div class="cal-subheading">Goals Recorded</div>
+              <div id="calDayGoals" class="cal-goals-list"></div>
+
+              <div class="cal-subheading" style="margin-top: 20px;">Routine Schedule for This Day</div>
+              <div id="calDaySchedule" class="cal-routine-list"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      <!-- ══════════════════════════════════════
+         SECTION: PROFILE & SETTINGS
+    ══════════════════════════════════════ -->
+    <section class="section" id="section-profile">
+      <header class="section-header">
+        <div>
+          <div class="greeting-badge">Account & Preferences</div>
+          <h1 class="section-title">Profile & Settings</h1>
+          <p class="section-sub">Manage your student profile, PIN credentials, and routine tracking preferences</p>
+        </div>
+      </header>
+
+      <div class="profile-settings-grid">
+        <!-- Card 1: Student Profile & Avatar -->
+        <div class="card profile-card">
+          <div class="card-head">
+            <div>
+              <h2 class="card-title">Student Identity</h2>
+              <p class="card-subtitle">Your personal details across Habit Tracker</p>
+            </div>
+          </div>
+          <div class="profile-avatar-row">
+            <div class="profile-avatar-display" id="profileAvatarDisplay">⚡</div>
+            <div class="profile-avatar-select-wrap">
+              <label class="form-label">Choose Avatar</label>
+              <div class="avatar-choices" id="avatarChoices">
+                <button type="button" class="avatar-choice-btn active" data-av="⚡" onclick="selectAvatar('⚡', this)">⚡</button>
+                <button type="button" class="avatar-choice-btn" data-av="🚀" onclick="selectAvatar('🚀', this)">🚀</button>
+                <button type="button" class="avatar-choice-btn" data-av="🎯" onclick="selectAvatar('🎯', this)">🎯</button>
+                <button type="button" class="avatar-choice-btn" data-av="💻" onclick="selectAvatar('💻', this)">💻</button>
+                <button type="button" class="avatar-choice-btn" data-av="🧠" onclick="selectAvatar('🧠', this)">🧠</button>
+                <button type="button" class="avatar-choice-btn" data-av="🔥" onclick="selectAvatar('🔥', this)">🔥</button>
+                <button type="button" class="avatar-choice-btn" data-av="🧘" onclick="selectAvatar('🧘', this)">🧘</button>
+                <button type="button" class="avatar-choice-btn" data-av="🏋️" onclick="selectAvatar('🏋️', this)">🏋️</button>
+              </div>
+            </div>
+          </div>
+
+          <form id="profileForm" onsubmit="return saveProfileSettings(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">First Name</label>
+                <input type="text" id="profFirstName" class="form-input" value="Michał" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Last Name</label>
+                <input type="text" id="profLastName" class="form-input" value="Masiak" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input type="email" id="profEmail" class="form-input" value="michal.masiak@anywhere.co" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Student Status / Title</label>
+              <input type="text" id="profStatus" class="form-input" value="Focus Champion" placeholder="e.g. Computer Science Undergrad" />
+            </div>
+            <button type="submit" class="btn-primary" style="margin-top: 10px;">Save Profile Changes</button>
+          </form>
+        </div>
+
+        <!-- Card 2: Security & PIN Settings -->
+        <div class="card profile-card">
+          <div class="card-head">
+            <div>
+              <h2 class="card-title">Security & PIN</h2>
+              <p class="card-subtitle">Control application lock and PIN protection</p>
+            </div>
+          </div>
+          <form id="securityForm" onsubmit="return savePinSettings(event)">
+            <div class="form-group">
+              <label class="form-label">Current PIN / Password</label>
+              <input type="password" id="secCurrentPin" class="form-input" placeholder="Current PIN (default: 13579)" />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">New PIN / Password</label>
+                <input type="password" id="secNewPin" class="form-input" placeholder="New PIN" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Confirm New PIN</label>
+                <input type="password" id="secConfirmPin" class="form-input" placeholder="Confirm PIN" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="secRememberToggle" checked />
+                <span>Auto-login on this device (Remember me)</span>
+              </label>
+            </div>
+            <button type="submit" class="btn-secondary" style="margin-top: 10px;">Update PIN & Security</button>
+          </form>
+        </div>
+
+        <!-- Card 3: Timetable & Routine Tracking Settings -->
+        <div class="card profile-card">
+          <div class="card-head">
+            <div>
+              <h2 class="card-title">Routines & Preferences</h2>
+              <p class="card-subtitle">Format and notification options</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Time Display Format</label>
+            <select class="form-input" id="prefTimeFormat" onchange="saveAppPreferences()">
+              <option value="12">12-Hour AM/PM (e.g. 5:45 AM – 6:00 AM)</option>
+              <option value="24">24-Hour Military (e.g. 05:45 – 06:00)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="prefTimeCheckSounds" checked onchange="saveAppPreferences()" />
+              <span>Enable audio chime on routine completion</span>
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="prefAutoCheckPrompt" checked onchange="saveAppPreferences()" />
+              <span>Show on-time execution badges in timetable</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Card 4: Data Management & Backup -->
+        <div class="card profile-card">
+          <div class="card-head">
+            <div>
+              <h2 class="card-title">Data Management</h2>
+              <p class="card-subtitle">Backup or reset your local productivity database</p>
+            </div>
+          </div>
+          <p style="font-size:13px;color:var(--text-secondary);margin-bottom:16px;">
+            All your timetable schedules, workout logs, habits, and streak metrics are stored securely in your browser's local sandbox.
+          </p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <button type="button" class="btn-secondary" onclick="exportDataJson()">⬇ Export Backup (JSON)</button>
+            <button type="button" class="btn-icon danger" onclick="restartApp()" style="padding:10px 16px;border-radius:10px;">↺ Reset All App Data</button>
+          </div>
+        </div>
+
+        
+      </div>
+    </section>
+
+  </main><!-- /main-content -->
+
+  <!-- ═══════════════════════════════════════
+       MODALS
+  ═══════════════════════════════════════ -->
+
+  <!-- Add / Edit Goal Modal -->
+  <div class="modal-overlay" id="goalModalOverlay">
+    <div class="modal" id="goalModal">
+      <div class="modal-head">
+        <h2 id="goalModalTitle">Add Goal</h2>
+        <button class="modal-close" id="goalModalClose">✕</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="editGoalId" />
+        <label class="form-label" for="goalTitle">Goal Title *</label>
+        <input class="form-input" type="text" id="goalTitle" placeholder="e.g. Read 30 pages" maxlength="80" />
+        
+        <label class="form-label" for="goalCategory">Category</label>
+        <select class="form-select" id="goalCategory">
+          <option value="Study">📚 Study</option>
+          <option value="Coding">💻 Coding</option>
+          <option value="Exercise">🏋️ Exercise</option>
+          <option value="Personal">🌱 Personal</option>
+          <option value="Other">✦ Other</option>
+        </select>
+
+        <label class="form-label" for="goalPriority">Priority</label>
+        <select class="form-select" id="goalPriority">
+          <option value="High">🔴 High</option>
+          <option value="Medium">🟡 Medium</option>
+          <option value="Low">🟢 Low</option>
+        </select>
+
+        <label class="form-label" for="goalNotes">Notes (optional)</label>
+        <textarea class="form-input" id="goalNotes" rows="3" placeholder="Any details, links, or checkpoints…"></textarea>
+      </div>
+      <div class="modal-foot">
+        <button class="btn-ghost" id="goalModalCancel">Cancel</button>
+        <button class="btn-primary" id="goalModalSave">Save Goal</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Habit Modal -->
+  <div class="modal-overlay" id="habitModalOverlay">
+    <div class="modal" id="habitModal">
+      <div class="modal-head">
+        <h2>Add Habit</h2>
+        <button class="modal-close" id="habitModalClose">✕</button>
+      </div>
+      <div class="modal-body">
+        <label class="form-label" for="habitName">Habit Name *</label>
+        <input class="form-input" type="text" id="habitName" placeholder="e.g. Morning meditation 10 min" maxlength="60" />
+        
+        <label class="form-label" for="habitEmoji">Emoji Icon</label>
+        <input class="form-input" type="text" id="habitEmoji" placeholder="🧘" maxlength="4" />
+      </div>
+      <div class="modal-foot">
+        <button class="btn-ghost" id="habitModalCancel">Cancel</button>
+        <button class="btn-primary" id="habitModalSave">Add Habit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Easy Timetable Slot Modal (Add / Edit) -->
+  <div class="modal-overlay" id="ttModalOverlay">
+    <div class="modal" id="ttModal">
+      <div class="modal-head">
+        <h2 id="ttModalTitle">Edit Time Slot</h2>
+        <button class="modal-close" id="ttModalClose">✕</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="editTtId" />
+
+        <div class="form-row-2">
+          <div class="form-col">
+            <label class="form-label" for="ttDaySelect">Day of Week</label>
+            <select class="form-select" id="ttDaySelect">
+              <option value="Monday">Monday</option>
+              <option value="Tuesday">Tuesday</option>
+              <option value="Wednesday">Wednesday</option>
+              <option value="Thursday">Thursday</option>
+              <option value="Friday">Friday</option>
+              <option value="Saturday">Saturday</option>
+              <option value="Sunday">Sunday</option>
+            </select>
+          </div>
+          <div class="form-col">
+            <label class="form-label" for="ttCategorySelect">Tag / Category</label>
+            <select class="form-select" id="ttCategorySelect">
+              <option value="Study">📚 Study</option>
+              <option value="College">🏫 College</option>
+              <option value="Coding">💻 Coding</option>
+              <option value="Exercise">🏋️ Workout</option>
+              <option value="Rest">☕ Rest / Break</option>
+              <option value="Play">🎮 Play / Leisure</option>
+              <option value="Dinner">🍽️ Dinner / Meals</option>
+              <option value="Work">📝 Assignment / Work</option>
+              <option value="Sleep">🌙 Sleep</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-col">
+            <label class="form-label" for="ttStartTime">Start Time *</label>
+            <input class="form-input" type="text" id="ttStartTime" placeholder="e.g. 05:30 or 7:00 AM" maxlength="12" />
+          </div>
+          <div class="form-col">
+            <label class="form-label" for="ttEndTime">End Time *</label>
+            <input class="form-input" type="text" id="ttEndTime" placeholder="e.g. 06:30 or 3:30 PM" maxlength="12" />
+          </div>
+        </div>
+
+        <label class="form-label" for="ttTaskName">Task / Activity *</label>
+        <input class="form-input" type="text" id="ttTaskName" placeholder="e.g. Coding practice" maxlength="50" />
+
+        <!-- Quick 1-Click Presets -->
+        <label class="form-label" style="margin-top: 14px;">Quick Activity Presets (Tap to fill)</label>
+        <div class="quick-preset-chips" id="ttQuickPresets">
+          <button type="button" class="preset-chip" data-task="Study" data-cat="Study">📚 Study</button>
+          <button type="button" class="preset-chip" data-task="College" data-cat="College">🏫 College</button>
+          <button type="button" class="preset-chip" data-task="Coding" data-cat="Coding">💻 Coding</button>
+          <button type="button" class="preset-chip" data-task="Assignment / Work" data-cat="Work">📝 Work</button>
+          <button type="button" class="preset-chip" data-task="Workout" data-cat="Exercise">🏋️ Workout</button>
+          <button type="button" class="preset-chip" data-task="Rest & Relax" data-cat="Rest">☕ Rest</button>
+          <button type="button" class="preset-chip" data-task="Play" data-cat="Play">🎮 Play</button>
+          <button type="button" class="preset-chip" data-task="Dinner" data-cat="Dinner">🍽️ Dinner</button>
+          <button type="button" class="preset-chip" data-task="Sleep" data-cat="Sleep">🌙 Sleep</button>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn-ghost" id="ttModalDelete" style="display:none; color:var(--red);">Delete Slot</button>
+        <div style="margin-left:auto; display:flex; gap:10px;">
+          <button class="btn-ghost" id="ttModalCancel">Cancel</button>
+          <button class="btn-primary" id="ttModalSave">Save Slot</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Account & PIN Settings Modal -->
+  <div class="modal-overlay" id="accountModalOverlay">
+    <div class="modal" id="accountModal">
+      <div class="modal-head">
+        <h2>Profile & Security Settings</h2>
+        <button class="modal-close" id="accountModalClose">✕</button>
+      </div>
+      <div class="modal-body">
+        <label class="form-label" for="accDisplayName">Display Name</label>
+        <input class="form-input" type="text" id="accDisplayName" placeholder="Your Name" maxlength="25" />
+
+        <label class="form-label" for="accAvatar">Avatar Icon / Emoji</label>
+        <input class="form-input" type="text" id="accAvatar" placeholder="⚡" maxlength="4" />
+
+        <div style="height: 1px; background: var(--border); margin: 20px 0;"></div>
+
+        <label class="form-label" for="accPassword">Security PIN / Password</label>
+        <input class="form-input" type="text" id="accPassword" placeholder="Default: 13579" maxlength="30" />
+        <p class="form-hint">Used to unlock Habit Tracker on startup or after locking the app.</p>
+      </div>
+      <div class="modal-foot">
+        <button class="btn-ghost" id="accountModalCancel">Cancel</button>
+        <button class="btn-primary" id="accountModalSave">Save Settings</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast notification -->
+    <!-- ═══════════════════════════════════════
+       MODAL: EDIT WORKOUT SESSION
+  ═══════════════════════════════════════ -->
+  <div class="modal-overlay" id="workoutEditModalOverlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2 class="modal-title" id="workoutEditModalTitle">Edit Workout Session</h2>
+        <button class="modal-close" onclick="closeWorkoutModal()">✕</button>
+      </div>
+      <form id="workoutEditForm" onsubmit="return handleSaveWorkoutDay(event)">
+        <input type="hidden" id="workoutEditDay" />
+        <div class="form-group">
+          <label class="form-label">Day of Week</label>
+          <input type="text" id="workoutDayDisplay" class="form-input" readonly />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Session Name</label>
+            <input type="text" id="workoutSessionInput" class="form-input" placeholder="e.g. Upper Body A" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Workout Type</label>
+            <select id="workoutTypeSelect" class="form-input">
+              <option value="Strength">Strength</option>
+              <option value="Recovery">Recovery</option>
+              <option value="Active">Active</option>
+              <option value="Cardio">Cardio</option>
+              <option value="Mobility">Mobility</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Exercises (One per line with sets & reps)</label>
+          <textarea id="workoutExercisesInput" class="form-input form-textarea" rows="6" placeholder="Push-ups — 3 × 8–15&#10;Backpack rows — 3 × 10–15&#10;Plank — 3 × 30–60 sec" required></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" onclick="closeWorkoutModal()">Cancel</button>
+          <button type="submit" class="btn-primary">Save Workout</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       MODAL: EDIT WELLNESS ITEM
+  ═══════════════════════════════════════ -->
+  <div class="modal-overlay" id="wellnessEditModalOverlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2 class="modal-title" id="wellnessModalTitle">Add Wellness / Grooming Item</h2>
+        <button class="modal-close" onclick="closeWellnessModal()">✕</button>
+      </div>
+      <form id="wellnessEditForm" onsubmit="return handleSaveWellnessItem(event)">
+        <input type="hidden" id="wellnessEditIndex" value="-1" />
+        <div class="form-group">
+          <label class="form-label">Category</label>
+          <select id="wellnessCategorySelect" class="form-input">
+            <option value="Health">🏃 Health</option>
+            <option value="Food">🥗 Food & Nutrition</option>
+            <option value="Grooming">💈 Grooming & Self-Care</option>
+            <option value="Pleasant Presence">🌟 Pleasant Presence</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Habit / Guideline Description</label>
+          <input type="text" id="wellnessTextInput" class="form-input" placeholder="e.g. Morning face wash + SPF 30+" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Frequency / Routine Tag</label>
+          <input type="text" id="wellnessFreqInput" class="form-input" placeholder="e.g. Daily / AM Routine / Weekly" />
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" onclick="closeWellnessModal()">Cancel</button>
+          <button type="submit" class="btn-primary">Save Item</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       MODAL: CHANGE SIGN-IN METHOD
+  ═══════════════════════════════════════ -->
+  <div class="modal-overlay" id="methodModalOverlay">
+    <div class="modal-card method-modal-card">
+      <div class="modal-header">
+        <h2 class="modal-title">Sign in Method</h2>
+        <button class="modal-close" onclick="closeMethodDialog()">✕</button>
+      </div>
+      <div class="method-modal-body">
+        <p style="font-size:13px;color:var(--text-secondary);margin-bottom:16px;">Choose your preferred instant access method:</p>
+        <button type="button" class="method-choice-btn" onclick="guestLogin('Google'); closeMethodDialog();">
+          <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
+          <span>Continue with Google</span>
+        </button>
+        <button type="button" class="method-choice-btn" onclick="guestLogin('Apple'); closeMethodDialog();">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.38c.62-.75 1.04-1.8 0.93-2.85-.9.04-1.99.6-2.61 1.35-.55.63-.99 1.68-.88 2.7.99.08 2.02-.45 2.56-1.2"/></svg>
+          <span>Continue with Apple</span>
+        </button>
+        <button type="button" class="method-choice-btn" onclick="document.getElementById('loginUsername').value='Michał Masiak'; document.getElementById('loginPassword').value='13579'; closeMethodDialog(); showToast('Michał Masiak (Default PIN: 13579) filled');">
+          <span>⚡</span>
+          <span>Fill Default Account (13579)</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
