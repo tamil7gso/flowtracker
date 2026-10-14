@@ -1,0 +1,1020 @@
+{
+  "timetable": {
+    "Monday": [
+      {
+        "time": "5:45–6:00 AM",
+        "task": "Wake up • Freshen up + water",
+        "category": "Health",
+        "details": ""
+      },
+      {
+        "time": "6:00–6:25 AM",
+        "task": "Home workout",
+        "category": "Fitness",
+        "details": ""
+      },
+      {
+        "time": "6:25–6:50 AM",
+        "task": "Shower + grooming",
+        "category": "Grooming",
+        "details": ""
+      },
+      {
+        "time": "6:50–7:05 AM",
+        "task": "Breakfast",
+        "category": "Food",
+        "details": ""
+      },
+      {
+        "time": "7:05–7:20 AM",
+        "task": "Dress, pack bag + final preparation",
+        "category": "Routine",
+        "details": ""
+      },
+      {
+        "time": "7:20–8:00 AM",
+        "task": "Leave for bus / travel to college",
+        "category": "Routine",
+        "details": ""
+      },
+      {
+        "time": "8:00 AM–4:30 PM",
+        "task": "College",
+        "category": "Study",
+        "details": ""
+      },
+      {
+        "time": "4:30–5:00 PM",
+        "task": "Travel back",
+        "category": "Routine",
+        "details": ""
+      },
+      {
+        "time": "5:00–5:30 PM",
+        "task": "Snack + rest",
+        "category": "Recovery",
+        "details": ""
+      },
+      {
+        "time": "5:30–6:45 PM",
+        "task": "Coding practice",
+        "category": "Coding",
+        "details": ""
+      },
+      {
+        "time": "6:45–7:45 PM",
+        "task": "Play time",
+        "category": "Play",
+        "details": ""
+      },
+      {
+        "time": "7:45–8:15 PM",
+        "task": "Dinner",
+        "category": "Food",
+        "details": ""
+      },
+      {
+        "time": "8:15–9:15 PM",
+        "task": "College assignments / work",
+        "category": "Study",
+        "details": ""
+      },
+      {
+        "time": "9:15–9:30 PM",
+        "task": "Break",
+        "category": "Recovery",
+        "details": ""
+      },
+      {
+        "time": "9:30–10:00 PM",
+        "task": "Revision + prepare for tomorrow",
+        "category": "Study",
+        "details": ""
+      },
+      {
+        "time": "10:00–10:20 PM",
+        "task": "Grooming + relaxation",
+        "category": "Grooming",
+        "details": ""
+      },
+      {
+        "time": "10:20–10:30 PM",
+        "task": "Phone-free wind-down",
+        "category": "Sleep",
+        "details": ""
+      },
+      {
+        "time": "10:30 PM",
+        "task": "Sleep",
+        "category": "Sleep",
+        "details": ""
+      }
+    ],
+    "Tuesday": [
+      {
+        "time": "5:45–6:00 AM",
+        "task": "Wake up • Freshen up + water",
+        "category": "Health",
+        "details": ""
+      },
+      {
+        "time": "6:00–6:25 AM",
+        "task": "Home workout",
+        "category": "Fitness",
+        "details": ""
+      },
+      {
+        "time": "6:25–6:50 AM",
+        "task": "Shower + grooming",
+        "category": "Grooming",
+        "details": ""
+      },
+      {
+        "time": "6:50–7:05 AM",
+        "task": "Breakfast",
+        "category": "Food",
+        "details": ""
+      },
+      {
+        "time": "7:05–7:20 AM",
+        "task": "Dress, pack bag + final preparation",
+        "category": "Routine",
+        "details": ""
+      },
+      {
+        "time": "7:20–8:00 AM",
+        "task": "Leave for bus / travel to college",
+        "category": "Routine",
+        "details": ""
+      },
+      {
+        "time": "8:00 AM–4:30 PM",
+        "task": "College",
+        "category": "Study",
+        "details": ""
+      },
+      {
+        "time": "4:30–5:00 PM",
+        "task": "Travel back",
+        "category": "Routine",
+        "details": ""
+      },
+      {
+        "time": "5:00–5:30 PM",
+        "task": "Snack + rest",
+        "category": "Recovery",
+        "details": ""
+      },
+      {
+        "time": "5:30–6:45 PM",
+        "task": "Coding practice",
+        "category": "Coding",
+        "details": ""
+      },
+      {
+        "time": "6:45–7:45 PM",
+        "task": "Play time",
+        "category": "Play",
+        "details": ""
+      },
+      {
+        "time": "7:45–8:15 PM",
+        "task": "Dinner",
+        "category": "Food",
+        "details": ""
+      },
+      {
+        "time": "8:15–9:15 PM",
+        "task": "College assignments / work",
+        "category": "Study",
+        "details": ""
+      },
+      {
+        "time": "9:15–9:30 PM",
+        "task": "Break",
+        "category": "Recovery",
+        "details": ""
+      },
+      {
+        "time": "9:30–10:00 PM",
+        "task": "Revision + prepare for tomorrow",
+        "category": "Study",
+        "details": ""
+      },
+      {
+        "time": "10:00–10:20 PM",
+        "task": "Grooming + relaxation",
+        "category": "Grooming",
+        "details": ""
+      },
+      {
+        "time": "10:20–10:30 PM",
+        "task": "Phone-free wind-down",
+        "category": "Sleep",
+        "details": ""
+      },
+      {
+        "time": "10:30 PM",
+        "task": "Sleep",
+        "category": "Sleep",
+        "details": ""
+      }
+    ],
+    "Wednesday": [
+      {
+        "time": "5:45–6:00 AM",
+        "task": "Wake up • Freshen up + water",
+        "category": "Health",
+        "details": ""
+      },
+      {
+        "time": "6:00–6:25 AM",
+        "task": "Home workout",
+        "category": "Fitness",
+        "details": ""
+      },
+      {
+        "time": "6:25–6:50 AM",
+        "task": "Shower + grooming",
+        "category": "Grooming",
+        "details": ""
+      },
+      {
+        "time": "6:50–7:05 AM",
+        "task": "Breakfast",
+        "category": "Food",
+        "details": ""
+      },
+      {
+        "time": "7:05–7:20 AM",
+        "task": "Dress, pack bag + final preparation",
+        "category": "Routine",
+        "details": ""
+      },
+      {
+        "time": "7:20–8:00 AM",
+        "task": "Leave for bus / travel to college",
+        "category": "Routine",
+        "details": ""
+      },
+      {
+        "time": "8:00 AM–4:30 PM",
+        "task": "College",
+        "category": "Study",
+        "details": ""
+      },
+      {
+        "time": "4:30–5:00 PM",
+        "task": "Travel back",
+        "category": "Routine",
+        "details": ""
+      },
+      {
+        "time": "5:00–5:30 PM",
+        "task": "Snack + rest",
+        "category": "Recovery",
+        "details": ""
+      },
+      {
+        "time": "5:30–6:45 PM",
+        "task": "Coding practice",
+        "category": "Coding",
+        "details": ""
+      },
+      {
+        "time": "6:45–7:45 PM",
+        "task": "Play time",
+        "category": "Play",
+        "details": ""
+      },
+      {
+        "time": "7:45–8:15 PM",
+        "task": "Dinner",
+        "category": "Food",
+        "details": ""
+      },
+      {
+        "time": "8:15–9:15 PM",
+        "task": "College assignments / work",
+        "category": "Study",
+        "details": ""
+      },
+      {
+        "time": "9:15–9:30 PM",
+        "task": "Break",
+        "category": "Recovery",
+        "details": ""
+      },
+      {
+        "time": "9:30–10:00 PM",
+        "task": "Revision + prepare for tomorrow",
+        "category": "Study",
+        "details": ""
+      },
+      {
+        "time": "10:00–10:20 PM",
+        "task": "Grooming + relaxation",
+        "category": "Grooming",
+        "details": ""
+      },
+      {
+        "time": "10:20–10:30 PM",
+        "task": "Phone-free wind-down",
+        "category": "Sleep",
+        "details": ""
+      },
+      {
+        "time": "10:30 PM",
+        "task": "Sleep",
+        "category": "Sleep",
+        "details": ""
+      }
+    ],
+    "Thursday": [
+      {
+        "time": "5:45–6:00 AM",
+        "task": "Wake up • Freshen up + water",
+        "category": "Health",
+        "details": ""
+      },
+      {
+        "time": "6:00–6:25 AM",
+        "task": "Home workout",
+        "category": "Fitness",
+        "details": ""
+      },
+      {
+        "time": "6:25–6:50 AM",
+        "task": "Shower + grooming",
+        "category": "Grooming",
+        "details": ""
+      },
+      {
+        "time": "6:50–7:05 AM",
+        "task": "Breakfast",
+        "category": "Food",
+        "details": ""
+      },
+      {
+        "time": "7:05–7:20 AM",
+        "task": "Dress, pack bag + final preparation",
+        "category": "Routine",
+        "details": ""
+      },
+      {
+        "time": "7:20–8:00 AM",
+        "task": "Leave for bus / travel to college",
+        "category": "Routine",
+        "details": ""
+      },
+      {
+        "time": "8:00 AM–4:30 PM",
+        "task": "College",
+        "category": "Study",
+        "details": ""
+      },
+      {
+        "time": "4:30–5:00 PM",
+        "task": "Travel back",
+        "category": "Routine",
+        "details": ""
+      },
+      {
+        "time": "5:00–5:30 PM",
+        "task": "Snack + rest",
+        "category": "Recovery",
+        "details": ""
+      },
+      {
+        "time": "5:30–6:45 PM",
+        "task": "Coding practice",
+        "category": "Coding",
+        "details": ""
+      },
+      {
+        "time": "6:45–7:45 PM",
+        "task": "Play time",
+        "category": "Play",
+        "details": ""
+      },
+      {
+        "time": "7:45–8:15 PM",
+        "task": "Dinner",
+        "category": "Food",
+        "details": ""
+      },
+      {
+        "time": "8:15–9:15 PM",
+        "task": "College assignments / work",
+        "category": "Study",
+        "details": ""
+      },
+      {
+        "time": "9:15–9:30 PM",
+        "task": "Break",
+        "category": "Recovery",
+        "details": ""
+      },
+      {
+        "time": "9:30–10:00 PM",
+        "task": "Revision + prepare for tomorrow",
+        "category": "Study",
+        "details": ""
+      },
+      {
+        "time": "10:00–10:20 PM",
+        "task": "Grooming + relaxation",
+        "category": "Grooming",
+        "details": ""
+      },
+      {
+        "time": "10:20–10:30 PM",
+        "task": "Phone-free wind-down",
+        "category": "Sleep",
+        "details": ""
+      },
+      {
+        "time": "10:30 PM",
+        "task": "Sleep",
+        "category": "Sleep",
+        "details": ""
+      }
+    ],
+    "Friday": [
+      {
+        "time": "5:45–6:00 AM",
+        "task": "Wake up • Freshen up + water",
+        "category": "Health",
+        "details": ""
+      },
+      {
+        "time": "6:00–6:25 AM",
+        "task": "Home workout",
+        "category": "Fitness",
+        "details": ""
+      },
+      {
+        "time": "6:25–6:50 AM",
+        "task": "Shower + grooming",
+        "category": "Grooming",
+        "details": ""
+      },
+      {
+        "time": "6:50–7:05 AM",
+        "task": "Breakfast",
+        "category": "Food",
+        "details": ""
+      },
+      {
+        "time": "7:05–7:20 AM",
+        "task": "Dress, pack bag + final preparation",
+        "category": "Routine",
+        "details": ""
+      },
+      {
+        "time": "7:20–8:00 AM",
+        "task": "Leave for bus / travel to college",
+        "category": "Routine",
+        "details": ""
+      },
+      {
+        "time": "8:00 AM–4:30 PM",
+        "task": "College",
+        "category": "Study",
+        "details": ""
+      },
+      {
+        "time": "4:30–5:00 PM",
+        "task": "Travel back",
+        "category": "Routine",
+        "details": ""
+      },
+      {
+        "time": "5:00–5:30 PM",
+        "task": "Snack + rest",
+        "category": "Recovery",
+        "details": ""
+      },
+      {
+        "time": "5:30–6:45 PM",
+        "task": "Coding practice",
+        "category": "Coding",
+        "details": ""
+      },
+      {
+        "time": "6:45–7:45 PM",
+        "task": "Play time",
+        "category": "Play",
+        "details": ""
+      },
+      {
+        "time": "7:45–8:15 PM",
+        "task": "Dinner",
+        "category": "Food",
+        "details": ""
+      },
+      {
+        "time": "8:15–9:15 PM",
+        "task": "College assignments / work",
+        "category": "Study",
+        "details": ""
+      },
+      {
+        "time": "9:15–9:30 PM",
+        "task": "Break",
+        "category": "Recovery",
+        "details": ""
+      },
+      {
+        "time": "9:30–10:00 PM",
+        "task": "Revision + prepare for tomorrow",
+        "category": "Study",
+        "details": ""
+      },
+      {
+        "time": "10:00–10:20 PM",
+        "task": "Grooming + relaxation",
+        "category": "Grooming",
+        "details": ""
+      },
+      {
+        "time": "10:20–10:30 PM",
+        "task": "Phone-free wind-down",
+        "category": "Sleep",
+        "details": ""
+      },
+      {
+        "time": "10:30 PM",
+        "task": "Sleep",
+        "category": "Sleep",
+        "details": ""
+      }
+    ],
+    "Saturday": [
+      {
+        "time": "7:00 AM",
+        "task": "Wake up",
+        "category": "Health",
+        "details": "Hydrate, freshen up, easy start"
+      },
+      {
+        "time": "7:15–7:45 AM",
+        "task": "Breakfast",
+        "category": "Food",
+        "details": "Balanced meal with protein + fruit"
+      },
+      {
+        "time": "8:00–8:50 AM",
+        "task": "Workout",
+        "category": "Fitness",
+        "details": "Strength workout or active fitness session"
+      },
+      {
+        "time": "9:00–11:00 AM",
+        "task": "Deep coding session",
+        "category": "Coding",
+        "details": "Focused learning: one topic, minimal distractions"
+      },
+      {
+        "time": "11:00–11:20 AM",
+        "task": "Break + snack",
+        "category": "Recovery",
+        "details": "Walk, water and healthy snack"
+      },
+      {
+        "time": "11:20 AM–12:30 PM",
+        "task": "College assignments",
+        "category": "Study",
+        "details": "Catch up on priority tasks"
+      },
+      {
+        "time": "12:30–1:15 PM",
+        "task": "Lunch",
+        "category": "Food",
+        "details": "Balanced lunch + hydration"
+      },
+      {
+        "time": "1:15–2:00 PM",
+        "task": "Rest / nap",
+        "category": "Sleep",
+        "details": "Short recovery break"
+      },
+      {
+        "time": "2:00–3:30 PM",
+        "task": "Coding project",
+        "category": "Coding",
+        "details": "Build, debug or document a personal project"
+      },
+      {
+        "time": "3:30–5:30 PM",
+        "task": "Play time",
+        "category": "Play",
+        "details": "2 hours of games or preferred fun activity"
+      },
+      {
+        "time": "5:30–6:30 PM",
+        "task": "Outdoor / social time",
+        "category": "Recovery",
+        "details": "Walk, meet friends or get fresh air"
+      },
+      {
+        "time": "6:30–7:15 PM",
+        "task": "Shower + refresh",
+        "category": "Grooming",
+        "details": "Recovery and grooming"
+      },
+      {
+        "time": "7:15–8:00 PM",
+        "task": "Dinner",
+        "category": "Food",
+        "details": "Balanced dinner"
+      },
+      {
+        "time": "8:00–9:00 PM",
+        "task": "Weekly revision",
+        "category": "Study",
+        "details": "Review key college topics from the week"
+      },
+      {
+        "time": "9:00–10:00 PM",
+        "task": "Entertainment / free time",
+        "category": "Play",
+        "details": "Relax without turning it into another task"
+      },
+      {
+        "time": "10:00–10:25 PM",
+        "task": "Grooming + wind-down",
+        "category": "Grooming",
+        "details": "Night face care and quiet relaxation"
+      },
+      {
+        "time": "10:25–10:45 PM",
+        "task": "Phone-free wind-down",
+        "category": "Sleep",
+        "details": "Prepare for sleep"
+      },
+      {
+        "time": "10:45 PM",
+        "task": "Sleep",
+        "category": "Sleep",
+        "details": "Sustainable rest for recovery"
+      }
+    ],
+    "Sunday": [
+      {
+        "time": "8:00 AM",
+        "task": "Later wake-up",
+        "category": "Health",
+        "details": "Relaxed start; hydrate and freshen up"
+      },
+      {
+        "time": "8:15–8:45 AM",
+        "task": "Breakfast",
+        "category": "Food",
+        "details": "Balanced breakfast at an easy pace"
+      },
+      {
+        "time": "9:00–9:30 AM",
+        "task": "Light walking / mobility",
+        "category": "Fitness",
+        "details": "Gentle movement and stretching"
+      },
+      {
+        "time": "9:30–10:30 AM",
+        "task": "Daily coding",
+        "category": "Coding",
+        "details": "Keep the habit alive without an intense workload"
+      },
+      {
+        "time": "10:30 AM–12:00 PM",
+        "task": "Free time",
+        "category": "Play",
+        "details": "Hobbies, family, entertainment or rest"
+      },
+      {
+        "time": "12:00–12:45 PM",
+        "task": "College work if necessary",
+        "category": "Study",
+        "details": "Only priority catch-up; otherwise keep this free"
+      },
+      {
+        "time": "12:45–1:30 PM",
+        "task": "Lunch",
+        "category": "Food",
+        "details": "Balanced meal + hydration"
+      },
+      {
+        "time": "1:30–2:30 PM",
+        "task": "Rest",
+        "category": "Sleep",
+        "details": "Recovery time or short nap"
+      },
+      {
+        "time": "2:30–4:30 PM",
+        "task": "Play time",
+        "category": "Play",
+        "details": "2 hours of guilt-free fun"
+      },
+      {
+        "time": "4:30–6:00 PM",
+        "task": "Outdoor / social activity",
+        "category": "Recovery",
+        "details": "Walk, friends, family or relaxed activity"
+      },
+      {
+        "time": "6:00–6:30 PM",
+        "task": "Prepare Monday bag + clothes",
+        "category": "Study",
+        "details": "Pack essentials and reduce Monday-morning stress"
+      },
+      {
+        "time": "6:30–7:00 PM",
+        "task": "Prepare weekly goals",
+        "category": "Study",
+        "details": "Set a few realistic priorities"
+      },
+      {
+        "time": "7:00–7:45 PM",
+        "task": "Dinner",
+        "category": "Food",
+        "details": "Balanced dinner"
+      },
+      {
+        "time": "7:45–8:15 PM",
+        "task": "Light revision",
+        "category": "Study",
+        "details": "Review only the most useful material"
+      },
+      {
+        "time": "8:15–9:15 PM",
+        "task": "Free time",
+        "category": "Play",
+        "details": "Relax and enjoy a low-pressure evening"
+      },
+      {
+        "time": "9:15–9:40 PM",
+        "task": "Grooming",
+        "category": "Grooming",
+        "details": "Night face wash, moisturizer and weekly maintenance if needed"
+      },
+      {
+        "time": "9:40–10:00 PM",
+        "task": "Phone-free wind-down",
+        "category": "Sleep",
+        "details": "Quiet preparation for Monday"
+      },
+      {
+        "time": "10:00 PM",
+        "task": "Early sleep",
+        "category": "Sleep",
+        "details": "Recovery + preparation for college week"
+      }
+    ]
+  },
+  "workout": [
+    {
+      "day": "Monday",
+      "session": "Upper Body A",
+      "type": "Strength",
+      "exercises": [
+        "Push-ups — 3 × 8–15",
+        "Backpack rows — 3 × 10–15",
+        "Pike push-ups — 3 × 6–12",
+        "Close-grip push-ups — 2 × 8–12",
+        "Backpack curls — 2 × 10–15",
+        "Plank — 3 × 30–60 sec"
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "session": "Legs + Core",
+      "type": "Strength",
+      "exercises": [
+        "Squats — 3 × 12–20",
+        "Reverse lunges — 3 × 8–12 each leg",
+        "Bulgarian split squats — 3 × 8–12 each leg",
+        "Glute bridges — 3 × 12–20",
+        "Calf raises — 3 × 15–25",
+        "Leg raises — 3 × 8–15"
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "session": "Recovery",
+      "type": "Recovery",
+      "exercises": [
+        "Walking — 20–30 minutes",
+        "Gentle stretching — 5–10 minutes"
+      ]
+    },
+    {
+      "day": "Thursday",
+      "session": "Upper Body B",
+      "type": "Strength",
+      "exercises": [
+        "Push-ups — 3 × 8–15",
+        "Backpack rows — 4 × 10–15",
+        "Decline push-ups — 3 × 6–12",
+        "Pike push-ups — 3 × 6–12",
+        "Backpack lateral raises — 3 × 12–20",
+        "Side plank — 2 × 30–45 sec each side"
+      ]
+    },
+    {
+      "day": "Friday",
+      "session": "Full Body",
+      "type": "Strength",
+      "exercises": [
+        "Squats — 3 × 15–20",
+        "Push-ups — 3 × 8–15",
+        "Backpack rows — 3 × 10–15",
+        "Reverse lunges — 3 × 10 each leg",
+        "Pike push-ups — 2 × 8–12",
+        "Mountain climbers — 3 × 20–30 sec",
+        "Plank — 2 × 45–60 sec"
+      ]
+    },
+    {
+      "day": "Saturday",
+      "session": "Active fitness",
+      "type": "Active",
+      "exercises": [
+        "Sports / cycling / walking — 45–90 minutes"
+      ]
+    },
+    {
+      "day": "Sunday",
+      "session": "Rest",
+      "type": "Recovery",
+      "exercises": [
+        "Complete rest or gentle movement"
+      ]
+    }
+  ],
+  "progression": [
+    "Start with good technique and stay within the listed rep ranges.",
+    "When you can comfortably reach the top of the rep range with solid form, increase difficulty.",
+    "Use a harder variation, slow the movement, add a small amount of backpack weight, or add reps gradually.",
+    "Keep increases small and sustainable; recovery and consistency matter more than rushing."
+  ],
+  "habits": [
+    {
+      "name": "Workout completed",
+      "emoji": "🏋️"
+    },
+    {
+      "name": "Upper body",
+      "emoji": "💪"
+    },
+    {
+      "name": "Legs",
+      "emoji": "🦵"
+    },
+    {
+      "name": "Core",
+      "emoji": "🧘"
+    },
+    {
+      "name": "Walking/sports",
+      "emoji": "🚶"
+    },
+    {
+      "name": "Warm-up",
+      "emoji": "⚡"
+    },
+    {
+      "name": "Stretching",
+      "emoji": "🤸"
+    },
+    {
+      "name": "Healthy food",
+      "emoji": "🥗"
+    },
+    {
+      "name": "Sleep on time",
+      "emoji": "💤"
+    },
+    {
+      "name": "Grooming",
+      "emoji": "✨"
+    }
+  ],
+  "wellness": {
+    "Health": [
+      {
+        "text": "7–8 hours sleep",
+        "freq": "Daily / as appropriate"
+      },
+      {
+        "text": "Regular water intake",
+        "freq": "Daily / as appropriate"
+      },
+      {
+        "text": "4 strength sessions/week",
+        "freq": "Daily / as appropriate"
+      },
+      {
+        "text": "Walking/light activity",
+        "freq": "Daily / as appropriate"
+      },
+      {
+        "text": "Recovery",
+        "freq": "Daily / as appropriate"
+      }
+    ],
+    "Food": [
+      {
+        "text": "Balanced breakfast",
+        "freq": "Daily / as appropriate"
+      },
+      {
+        "text": "Balanced lunch",
+        "freq": "Daily / as appropriate"
+      },
+      {
+        "text": "Healthy snack",
+        "freq": "Daily / as appropriate"
+      },
+      {
+        "text": "Balanced dinner",
+        "freq": "Daily / as appropriate"
+      },
+      {
+        "text": "Adequate protein",
+        "freq": "Daily / as appropriate"
+      },
+      {
+        "text": "Fruits/vegetables",
+        "freq": "Daily / as appropriate"
+      },
+      {
+        "text": "Limit excessive junk food and sugary drinks",
+        "freq": "Daily / as appropriate"
+      }
+    ],
+    "Grooming": [
+      {
+        "text": "Morning face wash",
+        "freq": "Daily / as appropriate"
+      },
+      {
+        "text": "Moisturizer",
+        "freq": "Daily / as appropriate"
+      },
+      {
+        "text": "SPF 30+ sunscreen",
+        "freq": "Daily / as appropriate"
+      },
+      {
+        "text": "Clean hair",
+        "freq": "Daily / as appropriate"
+      },
+      {
+        "text": "Low taper + textured natural hairstyle suggestion",
+        "freq": "Daily / as appropriate"
+      },
+      {
+        "text": "Clean shave or short even stubble",
+        "freq": "Daily / as appropriate"
+      },
+      {
+        "text": "Night face wash + moisturizer",
+        "freq": "Daily / as appropriate"
+      },
+      {
+        "text": "Weekly nail/hair/facial-hair maintenance",
+        "freq": "Daily / as appropriate"
+      },
+      {
+        "text": "Clean clothes and shoes",
+        "freq": "Daily / as appropriate"
+      }
+    ],
+    "Pleasant Presence": [
+      {
+        "text": "Good posture",
+        "freq": "Daily / as appropriate"
+      },
+      {
+        "text": "Calm voice",
+        "freq": "Daily / as appropriate"
+      },
+      {
+        "text": "Eye contact",
+        "freq": "Daily / as appropriate"
+      },
+      {
+        "text": "Natural smile",
+        "freq": "Daily / as appropriate"
+      },
+      {
+        "text": "Good hygiene",
+        "freq": "Daily / as appropriate"
+      },
+      {
+        "text": "Don't force confidence; behave naturally and respectfully",
+        "freq": "Daily / as appropriate"
+      }
+    ]
+  }
+}
